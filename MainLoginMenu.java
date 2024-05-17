@@ -24,7 +24,7 @@ public class MainLoginMenu {
     }
 
     public static void mostrarMenu() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner op = new Scanner(System.in);
         int opcion;
 
         do {
@@ -34,7 +34,7 @@ public class MainLoginMenu {
             System.out.println("3. Realizar venta");
             System.out.println("4. Salir");
             System.out.print("Ingrese la opción deseada: ");
-            opcion = scanner.nextInt();
+            opcion = op.nextInt();
 
             switch (opcion) {
                 case 1:
@@ -54,7 +54,7 @@ public class MainLoginMenu {
             }
         } while (opcion != 4);
 
-        scanner.close();
+        op.close();
     }
 
     public static void agregarPrenda() {
