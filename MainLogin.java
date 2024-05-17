@@ -22,7 +22,8 @@ public class MainLogin {
 
             if (usuario.equals(USUARIO_CORRECTO) && contraseña.equals(CONTRASEÑA_CORRECTA)) {
                 inicioSesionExitoso = true; // Marcamos el inicio de sesión como exitoso
-                System.out.println("Inicio de sesión exitoso. ¡Bienvenido a la tienda, " + usuario + "!");
+                System.out.println("Inicio de sesión exitoso. ¡Bienvenido a la tienda espero encuentren lo que buscan, "
+                        + usuario + "!");
             } else {
                 System.out.println("Nombre de usuario o contraseña incorrectos. Inténtelo de nuevo.");
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
