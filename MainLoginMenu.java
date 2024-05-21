@@ -1,71 +1,59 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class MainLoginMenu {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Usuario: ");
+            String usuario = sc.nextLine();
+            System.out.print("Contraseña: ");
+            String contraseña = sc.nextLine();
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+            if (Login.verificarCredenciales(usuario, contraseña)) {
+                System.out.println("Inicio de sesión exitoso.");
+                mostrarMenu();
+            } else {
+                System.out.println("Credenciales incorrectas. El programa se cerrará.");
+            }
 
-        String USUARIO_CORRECTO = "claudia";
-        String CONTRASEÑA_CORRECTA = "030405";
-
-        Scanner reader = new Scanner(System.in);
-
-        System.out.println("Ingrese su nombre de usuario:");
-        String usuario = reader.nextLine();
-        System.out.println("Ingrese su contraseña:");
-        String contraseña = reader.nextLine();
-
-        if (usuario.equals(USUARIO_CORRECTO) && contraseña.equals(CONTRASEÑA_CORRECTA)) {
-            System.out.println("Inicio de sesión exitoso. ¡Bienvenido a la tienda, " + usuario + "!");
-            mostrarMenu(); // Llamamos a la función para mostrar el menú
-        } else {
-            System.out.println("Nombre de usuario o contraseña incorrectos. Saliendo del sistema...");
+            sc.close();
+        } catch (Exception e) {
+            System.out.println("El error es" + e);
         }
     }
 
     public static void mostrarMenu() {
         Scanner op = new Scanner(System.in);
-        int opcion;
+        try {
+            int opcion;
+            do {
+                System.out.println("Bienvenido al Menú de Ropa");
+                System.out.println("1. Ver categorías de ropa");
+                System.out.println("2. Ver carrito");
+                System.out.println("3. Salir");
+                System.out.print("Seleccione una opción: ");
+                opcion = op.nextInt();
 
-        do {
-            System.out.println("=== Menú de Gestión de Ropa ===");
-            System.out.println("1. Agregar prenda");
-            System.out.println("2. Mostrar inventario");
-            System.out.println("3. Realizar venta");
-            System.out.println("4. Salir");
-            System.out.print("Ingrese la opción deseada: ");
-            opcion = op.nextInt();
+                switch (opcion) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        System.out.println("Gracias por usar nuestro menú de ropa. ¡Hasta luego!");
+                        return;
+                    default:
+                        System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+                        break;
+                }
+            } while (opcion != 3);
 
-            switch (opcion) {
-                case 1:
-                    agregarPrenda();
-                    break;
-                case 2:
-                    mostrarInventario();
-                    break;
-                case 3:
-                    realizarVenta();
-                    break;
-                case 4:
-                    System.out.println("Saliendo del sistema... Espere por favor");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Por favor, ingrese una opción válida.");
-            }
-        } while (opcion != 4);
-
-        op.close();
-    }
-
-    public static void agregarPrenda() {
-        System.out.println("Agregando prenda...");
-    }
-
-    public static void mostrarInventario() {
-        System.out.println("Mostrando inventario...");
-    }
-
-    public static void realizarVenta() {
-        System.out.println("Realizando venta...");
+            mostrarMenu();
+        } catch (Exception e) {
+            System.out.println("El error es" + e);
+            mostrarMenu();
+        } finally {
+            op.close();
+        }
     }
 }
